@@ -6,6 +6,25 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		1B0E3C432E95AE170042222D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1B0E3C422E95AE170042222D /* SDWebImage */; };
+		1B0E3C452E95AE170042222D /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B0E3C442E95AE170042222D /* SDWebImageMapKit */; };
+		1B20AD842E941C4300E94651 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1B20AD832E941C4300E94651 /* Alamofire */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		1B20AD882E941C7200E94651 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		1B88DD412E9417DF004FA32F /* CapsuleMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CapsuleMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +55,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B0E3C432E95AE170042222D /* SDWebImage in Frameworks */,
+				1B0E3C452E95AE170042222D /* SDWebImageMapKit in Frameworks */,
+				1B20AD842E941C4300E94651 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +90,7 @@
 				1B88DD3D2E9417DF004FA32F /* Sources */,
 				1B88DD3E2E9417DF004FA32F /* Frameworks */,
 				1B88DD3F2E9417DF004FA32F /* Resources */,
+				1B20AD882E941C7200E94651 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -78,6 +101,9 @@
 			);
 			name = CapsuleMusic;
 			packageProductDependencies = (
+				1B20AD832E941C4300E94651 /* Alamofire */,
+				1B0E3C422E95AE170042222D /* SDWebImage */,
+				1B0E3C442E95AE170042222D /* SDWebImageMapKit */,
 			);
 			productName = CapsuleMusic;
 			productReference = 1B88DD412E9417DF004FA32F /* CapsuleMusic.app */;
@@ -107,6 +133,10 @@
 			);
 			mainGroup = 1B88DD382E9417DF004FA32F;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				1B20AD822E941C4300E94651 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				1B0E3C412E95AE170042222D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1B88DD422E9417DF004FA32F /* Products */;
 			projectDirPath = "";
@@ -160,6 +190,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SlavaKornienko.CapsuleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -188,6 +221,9 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SlavaKornienko.CapsuleMusic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -335,6 +371,43 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1B0E3C412E95AE170042222D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.21.2;
+			};
+		};
+		1B20AD822E941C4300E94651 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.10.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1B0E3C422E95AE170042222D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B0E3C412E95AE170042222D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		1B0E3C442E95AE170042222D /* SDWebImageMapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B0E3C412E95AE170042222D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImageMapKit;
+		};
+		1B20AD832E941C4300E94651 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B20AD822E941C4300E94651 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 1B88DD392E9417DF004FA32F /* Project object */;
 }

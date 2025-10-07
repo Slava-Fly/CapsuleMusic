@@ -14,20 +14,15 @@ protocol SearchDisplayLogic: class {
 
 class SearchViewController: UIViewController, SearchDisplayLogic {
 
-  var interactor: SearchBusinessLogic?
-  var router: (NSObjectProtocol & SearchRoutingLogic)?
-
-  // MARK: Object lifecycle
-  
-  override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-    super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
+    @IBOutlet weak var table: UITableView!
+    
+    private var searchViewModel = SearchViewModel(cells: [])
+    private var timer: Timer?
+    
+    var interactor: SearchBusinessLogic?
+    var router: (NSObjectProtocol & SearchRoutingLogic)?
+    
+    let searchController = UISearchController(searchResultsController: nil)
   
   // MARK: Setup
   
@@ -49,12 +44,75 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
   
   // MARK: View lifecycle
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-  }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setup()
+        
+        setupTableViewCell()
+        setupSearchBar()
+    }
+    
+    private func setupSearchBar() {
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
+    
+    private func setupTableViewCell() {
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cellId")
+        
+        let nib = UINib(nibName: "TrackCell", bundle: nil)
+        table.register(nib, forCellReuseIdentifier: TrackCell.reuseId)
+    }
+    
+    func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
+        
+        switch viewModel {
+        case .some:
+            print("viewController .some")
+        case .displayTracks(let searchViewModel):
+            print("viewController .displayTracks")
+            self.searchViewModel = searchViewModel
+            self.table.reloadData()
+        }
+    }
   
-  func displayData(viewModel: Search.Model.ViewModel.ViewModelData) {
+}
 
-  }
-  
+// MARK: UITableViewDelegate, UITableViewDataSource
+
+extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return searchViewModel.cells.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: TrackCell.reuseId, for: indexPath) as! TrackCell
+        
+        let cellViewModel = searchViewModel.cells[indexPath.row]
+        print("cellViewModel PreviewUrl: \(cellViewModel.previewUrl)")
+        cell.trackImageView.backgroundColor = .red
+        cell.set(viewModel: cellViewModel)
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
+    }
+}
+
+// MARK: UISearchBarDelegate
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        print("\(searchText)")
+        
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false, block: { _ in
+            self.interactor?.makeRequest(request: Search.Model.Request.RequestType.getTracks(searchTerm: searchText))
+        })
+    }
 }

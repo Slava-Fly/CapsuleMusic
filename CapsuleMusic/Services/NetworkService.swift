@@ -18,8 +18,7 @@ class NetworkService {
         ]
         
         AF.request(url, method: .get, parameters: parametres, encoding: URLEncoding.default, headers: nil)
-        
-            .validate()
+    
             .responseData { dataResponse in
                 
             switch dataResponse.result {
@@ -35,10 +34,7 @@ class NetworkService {
                     print("Failed to decode JSON", jsonDecoder.localizedDescription)
                     completion(nil)
                 }
-                
-//                let someString = String(data: data, encoding: .utf8)
-//                print(someString ?? "")
-                
+
             case .failure(let error):
                 print("Error received requesting data: \(error.localizedDescription)")
                 completion(nil)
