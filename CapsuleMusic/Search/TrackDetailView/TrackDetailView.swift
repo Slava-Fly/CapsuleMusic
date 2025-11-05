@@ -10,7 +10,7 @@ import SDWebImage
 import AVKit
 
 
-protocol TrackMovingDelegate: AnyObject {
+protocol TrackMovingDelegate {
     func moveBackForPreviousTrack() -> SearchViewModel.Cell?
     func moveForwardForPreviousTrack() -> SearchViewModel.Cell?
 }
@@ -39,7 +39,7 @@ class TrackDetailView: UIView {
         return avPlayer
     }()
     
-    weak var delegate: TrackMovingDelegate?
+    var delegate: TrackMovingDelegate?
     weak var tabBarDelegate: MainTabBarControllerDelegate?
     
     // MARK: - awakeFromNib
@@ -75,7 +75,6 @@ class TrackDetailView: UIView {
     }
     
     private func setupGestures() {
-        
         
         miniTrackView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapMaximized)))
         miniTrackView.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: #selector(handlePan)))
@@ -219,8 +218,6 @@ class TrackDetailView: UIView {
     
     @IBAction func dragDownButtonTapped(_ sender: Any) {
         self.tabBarDelegate?.minimizeTrackDetailController()
-        
-        //self.removeFromSuperview()
     }
     
     @IBAction func previousTrack(_ sender: Any) {

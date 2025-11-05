@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-//
 extension UIViewController {
     
     class func loadFromStoryboard<T: UIViewController>() -> T {

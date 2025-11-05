@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol MainTabBarControllerDelegate: AnyObject {
     func minimizeTrackDetailController()
@@ -32,10 +33,16 @@ class MainTabBarController: UITabBarController {
         setupTrackDetailView()
         
         searchVC.tabBarDelegate = self
+        
+        var library = Library()
+        library.tabBarDelegate = self
+        let hostVC = UIHostingController(rootView: library)
+        hostVC.tabBarItem.image = #imageLiteral(resourceName: "library")
+        hostVC.tabBarItem.title = "Library"
 
         viewControllers = [
-            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "search"), title: "Search"),
-            generateViewController(rootViewController: LibraryViewController(), image: #imageLiteral(resourceName: "library"), title: "Library")
+            hostVC,
+            generateViewController(rootViewController: searchVC, image: #imageLiteral(resourceName: "search"), title: "Search")
         ]
     }
     
@@ -66,7 +73,6 @@ class MainTabBarController: UITabBarController {
         trackDetailView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         
     }
-
 }
 
 extension MainTabBarController: MainTabBarControllerDelegate {
@@ -78,18 +84,20 @@ extension MainTabBarController: MainTabBarControllerDelegate {
         maximizedTopAnchorConstraint.constant = 0
         bottomAnchorConstraint.constant = 0
         
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.7,
-                       initialSpringVelocity: 1,
-                       options: .curveEaseOut,
-                       animations: {
-                       self.view.layoutIfNeeded()
-                       self.tabBar.alpha = 0
-                       self.trackDetailView.miniTrackView.alpha = 0
-                       self.trackDetailView.maxizedStackView.alpha = 1
-        },
-                       completion: nil)
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.view.layoutIfNeeded()
+                self.tabBar.alpha = 0
+                self.trackDetailView.miniTrackView.alpha = 0
+                self.trackDetailView.maxizedStackView.alpha = 1
+            },
+            completion: nil
+        )
         
         guard let viewModel = viewModel else { return }
         self.trackDetailView.set(viewModel: viewModel)
@@ -100,17 +108,19 @@ extension MainTabBarController: MainTabBarControllerDelegate {
         bottomAnchorConstraint.constant = view.frame.height
         minimizedTopAnchorConstraint.isActive = true
         
-        UIView.animate(withDuration: 0.5,
-                       delay: 0,
-                       usingSpringWithDamping: 0.7,
-                       initialSpringVelocity: 1,
-                       options: .curveEaseOut,
-                       animations: {
-                        self.view.layoutIfNeeded()
-                        self.tabBar.alpha = 1
-                        self.trackDetailView.miniTrackView.alpha = 1
-                        self.trackDetailView.maxizedStackView.alpha = 0
-        },
-                       completion: nil)
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0,
+            usingSpringWithDamping: 0.7,
+            initialSpringVelocity: 1,
+            options: .curveEaseOut,
+            animations: {
+                self.view.layoutIfNeeded()
+                self.tabBar.alpha = 1
+                self.trackDetailView.miniTrackView.alpha = 1
+                self.trackDetailView.maxizedStackView.alpha = 0
+            },
+            completion: nil
+        )
     }
 }

@@ -10,6 +10,8 @@
 		1B0E3C432E95AE170042222D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1B0E3C422E95AE170042222D /* SDWebImage */; };
 		1B0E3C452E95AE170042222D /* SDWebImageMapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1B0E3C442E95AE170042222D /* SDWebImageMapKit */; };
 		1B20AD842E941C4300E94651 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 1B20AD832E941C4300E94651 /* Alamofire */; };
+		1B2E1F6A2EA3D5CC0028D6A6 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E1F692EA3D5CC0028D6A6 /* URLImage */; };
+		1B2E1F6C2EA3D5CC0028D6A6 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = 1B2E1F6B2EA3D5CC0028D6A6 /* URLImageStore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,7 +35,7 @@
 		1B88DD532E9417E2004FA32F /* Exceptions for "CapsuleMusic" folder in "CapsuleMusic" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				Resources/Info.plist,
 			);
 			target = 1B88DD402E9417DF004FA32F /* CapsuleMusic */;
 		};
@@ -55,8 +57,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B2E1F6C2EA3D5CC0028D6A6 /* URLImageStore in Frameworks */,
 				1B0E3C432E95AE170042222D /* SDWebImage in Frameworks */,
 				1B0E3C452E95AE170042222D /* SDWebImageMapKit in Frameworks */,
+				1B2E1F6A2EA3D5CC0028D6A6 /* URLImage in Frameworks */,
 				1B20AD842E941C4300E94651 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +108,8 @@
 				1B20AD832E941C4300E94651 /* Alamofire */,
 				1B0E3C422E95AE170042222D /* SDWebImage */,
 				1B0E3C442E95AE170042222D /* SDWebImageMapKit */,
+				1B2E1F692EA3D5CC0028D6A6 /* URLImage */,
+				1B2E1F6B2EA3D5CC0028D6A6 /* URLImageStore */,
 			);
 			productName = CapsuleMusic;
 			productReference = 1B88DD412E9417DF004FA32F /* CapsuleMusic.app */;
@@ -136,6 +142,7 @@
 			packageReferences = (
 				1B20AD822E941C4300E94651 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				1B0E3C412E95AE170042222D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				1B2E1F682EA3D5CC0028D6A6 /* XCRemoteSwiftPackageReference "url-image" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 1B88DD422E9417DF004FA32F /* Products */;
@@ -177,7 +184,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5H4N5Q6422;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CapsuleMusic/Info.plist;
+				INFOPLIST_FILE = CapsuleMusic/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -208,7 +215,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5H4N5Q6422;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = CapsuleMusic/Info.plist;
+				INFOPLIST_FILE = CapsuleMusic/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -389,6 +396,14 @@
 				minimumVersion = 5.10.2;
 			};
 		};
+		1B2E1F682EA3D5CC0028D6A6 /* XCRemoteSwiftPackageReference "url-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmytro-anokhin/url-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -406,6 +421,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1B20AD822E941C4300E94651 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		1B2E1F692EA3D5CC0028D6A6 /* URLImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E1F682EA3D5CC0028D6A6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImage;
+		};
+		1B2E1F6B2EA3D5CC0028D6A6 /* URLImageStore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1B2E1F682EA3D5CC0028D6A6 /* XCRemoteSwiftPackageReference "url-image" */;
+			productName = URLImageStore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

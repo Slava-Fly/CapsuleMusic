@@ -12,10 +12,28 @@ protocol SearchPresentationLogic {
 }
 
 class SearchPresenter: SearchPresentationLogic {
-    weak var viewController: SearchDisplayLogic?
+  weak var viewController: SearchDisplayLogic?
+  
+  func presentData(response: Search.Model.Response.ResponseType) {
+  
+    switch response {
+    case .presentTracks(let searchResults):
+        let cells = searchResults?.results.map({ (track) in
+            cellViewModel(from: track)
+        }) ?? []
+        
+        let searchViewModel = SearchViewModel.init(cells: cells)
+        print("presenter .presentTracks")
+        viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayTracks(searchViewModel: searchViewModel))
+    
+    case .presentFooterView:
+        viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayFooterView)
+    }
+  }
     
     private func cellViewModel(from track: Track) -> SearchViewModel.Cell {
-        return SearchViewModel.Cell(
+        
+        return SearchViewModel.Cell.init(
             iconUrlString: track.artworkUrl100,
             trackName: track.trackName,
             collectionName: track.collectionName ?? "",
@@ -23,23 +41,5 @@ class SearchPresenter: SearchPresentationLogic {
             previewUrl: track.previewUrl
         )
     }
-    
-    func presentData(response: Search.Model.Response.ResponseType) {
-        
-        switch response {
-        case .presentTracks(let searchResults):
-            let cells = searchResults?.results.map({ track in
-                cellViewModel(from: track)
-            }) ?? []
-            let searchViewModel = SearchViewModel.init(cells: cells)
-            
-            print("present .presentTracks")
-            viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayTracks(searchViewModel: searchViewModel))
-        case .presentFooterView:
-            viewController?.displayData(viewModel: Search.Model.ViewModel.ViewModelData.displayFooterView)
-        }
-    }
-    
 }
-
 
