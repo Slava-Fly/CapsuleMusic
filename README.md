@@ -12,19 +12,13 @@ iOS приложение для поиска и прослушивания му�
 
 ## 📱 Скриншоты
 
-| Поиск | Библиотека |
-|---------------|------------|
-| <img src="screenshots/search.png" width="200"> | <img src="screenshots/library.png" width="200"> |
+| Библиотека | Поиск | Аудиоплеер |
+|---------------|-------------|---------------|
+| <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Simulator%3Alibrary.png" width="250"> | <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Simulator%3Asearch.png" width="250"> | <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Screenshots/Simulator%3ATrack.png" width="250"> |
 
 ## 🏗 Архитектура
 
 Проект реализован с использованием **Clean Architecture**:
-
-### Слои приложения:
-
-1. **Domain Layer** - Бизнес-логика и Use Cases
-2. **Presentation Layer** - ViewModels и UI логика  
-3. **Data Layer** - Сервисы и хранилища
 
 ## 🛠 Технический стек
 
@@ -47,20 +41,19 @@ iOS приложение для поиска и прослушивания му�
 - ▸ **UserDefaults** — Локальное хранение избранных треков
 - ▸ **iTunes Search API** — Получение данных о музыке
 
+## 📦 Клонирование репозитория
 
-## 📦 Установка и запуск
-
-### Шаги установки
-
-**Клонирование репозитория**
-
-1. **iTunes Search API**
+**iTunes Search API**
 ```bash
 git clone https://github.com/yourusername/music-search-app.git
-cd music-search-app
-
-2. **SDWebImage**
+```
+**SDWebImage**
+```bash
 git clone https://github.com/SDWebImage/SDWebImage.git
+```
+**URLImage**
+```bash
+git clone https://github.com/dmytro-anokhin/url-image.git
+```
 
-3. URLImage
-git clone https://github.com/dmytro-anokhin/url-image
+
