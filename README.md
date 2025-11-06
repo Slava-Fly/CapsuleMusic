@@ -14,7 +14,7 @@ iOS приложение для поиска и прослушивания му�
 
 | Библиотека | Поиск | Аудиоплеер |
 |---------------|-------------|---------------|
-| <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Simulator%3Alibrary.png" width="250"> | <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Simulator%3Asearch.png" width="250"> | <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Screenshots/Simulator%3ATrack.png" width="250"> |
+| <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Screenshots/Simulator%3Alibrary.png" width="250"> | <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Screenshots/Simulator%3Asearch.png" width="250"> | <img src="https://github.com/Slava-Fly/CapsuleMusic/blob/main/Screenshots/Simulator%3ATrack.png" width="250"> |
 
 ## 🏗 Архитектура
 
